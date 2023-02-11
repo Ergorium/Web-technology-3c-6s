@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-`8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/b66fce7160.js" crossorigin="anonymous"></script>
+  <style type="text/css">
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body class="min-h-[100vh] w-full flex flex-col text-amber-100">
+  <header class="absolute p-4 bg-stone-700 l-0 t-0 r-0 w-full">
+    <div class="container flex justify-between items-center">
+      <a href="/" class="logo text-4xl flex">
+        <img src="assets/2379396.svg" class="max-w-[40px] mr-2" alt="Logo">
+        Библиотека
+      </a>
+      <div class="search">
+        <form id="query-form">
+          <input id="search" type="text" placeholder="search" class="rounded-sm bg-stone-800 bg-opacity-70 focus:bg-opacity-100 outline-0 border-0 px-2 py-1">
+          <button id="search-button" type="sumbit"><i class="fa-solid fa-magnifying-glass p-2"></i></button>
+        </form>
+      </div>
+      <nav>
+        <a href="/" class="mr-2">Home</a>
+        <a href="/admin" class="mr-2">Admin</a>
+      </nav>
+    </div>
+  </header>
+  <main class="w-full min-h-full grow pt-24 p-4 bg-stone-500">
+    <!-- <div class="container">
+      <p class="mb-5">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium minima at possimus, fugiat cupiditate cum deleniti magnam nemo inventore, porro molestiae voluptatibus cumque placeat tempore esse! Similique totam odio excepturi?
+      </p>
+      <div class="list">
+        <div class="filters mb-4">
+          <p class="text-3xl">Filters</p>
+          <form id="filter-form" class="flex">
+            <label for="reserved" class="flex select-none mr-4">
+              <p class="text-xl mr-2">Зарезервированные</p>
+              <input type="checkbox" id="filter-reserved" name="reserved" class="w-[20px]">  
+            </label>
+            <label for="filter-author">
+              <select id="filter-author" class="p-2 bg-stone-600 min-w-[200px] mr-4" name="authorfilter">
+              </select>
+            </label>
+            <button class="px-2 py-1 bg-stone-600 rounded bg-opacity-80 hover:bg-opacity-100 transition-all active:scale-95">Применить фильтр</button>  
+          </form>
+          <button id="reset-filter" class="px-2 py-1 bg-stone-600 rounded bg-opacity-80 hover:bg-opacity-100 transition-all active:scale-95">Сбросить фильтр</button>   
+        </div>
+        <div class="items" id="itemlist">
+        </div>
+      </div>
+    </div>
+    <div id="view-modal">
+    </div> -->
+    <div class="container mb-4" id="controll-block">
+      <div class="search mb-4">
+        <form id="query-form">
+          <input id="search" type="text" placeholder="search" class="rounded-sm bg-stone-800 bg-opacity-70 focus:bg-opacity-100 outline-0 border-0 px-2 py-1">
+          <select name="type" id=""></select>
+          <button id="search-button" type="sumbit"><i class="fa-solid fa-magnifying-glass p-2"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="container" id="bookList"></div>
+    <div class="container" id="indicator"></div>
+    <div id="view-modal">
+    </div>
+  </main>
+  <footer class="shrink-0 p-4 bg-stone-700">
+    <div class="container text-center">
+      &copy;&nbsp;Progressiv
+    </div>
+  </footer>
+  <!-- <script src="js/index.js"></script> -->
+  <script src="js/books.js"></script>
+</body>
+</html>

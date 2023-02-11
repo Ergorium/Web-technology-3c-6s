@@ -1,0 +1,24 @@
+<div class="mb-8">
+  <div class="card flex">
+    <div class="card--icon">
+      {{#if book.img_url}}
+      <img src="{{book.img_url}}" class="max-w-[80px] mr-2" alt="Logo">
+      {{else}}
+      <img src="/assets/2379396.svg" class="max-w-[80px] mr-2" alt="Logo">
+      {{/if}}
+    </div>
+    <div class="card--main">
+      <h3 class="card--header text-3xl text-amber-200 book-modal cursor-pointer" book-id="${
+        item.id
+      }">{{book.title}}</h3>
+      <h5 class="card--header text-2xl text-amber-200">{{book.author}}</h5>
+      <p class="card--description">{{book.description}}</p>
+      {{#if book.reserved}}
+      <p><a href="/static/profiles/{{book.profileId}}" class="text-3xl underline">В резерве!!!</a></p>
+      {{/if}}
+      {{#if haveLink}}
+      <p><a href="/static/books/{{book.id}}" class="text-2xl">Подробней...</a></p>
+      {{/if}}
+    </div>
+  </div>
+</div>
