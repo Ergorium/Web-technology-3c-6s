@@ -21,9 +21,8 @@ app.engine(
 app.set('view engine', 'handlebars')
 app.set('views', './views')
 
+app.use(express.static('static/assets'))
 app.use('/', router)
-
-app.use(express.static('static'))
 
 app.listen(PORT, () => {
   console.log(`server started on ${PORT}`)

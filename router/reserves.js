@@ -1,6 +1,6 @@
 import express from 'express'
 import { body, validationResult } from 'express-validator'
-import { promiseConnect } from '../../db/connector.js'
+import { promiseConnect } from '../db/connector.js'
 const router = express.Router()
 
 router.get('/new', (_, res) => {
@@ -33,7 +33,7 @@ router.post(
         `update books set reserved = true where id = ${req.body.bookId}`
       )
       await connect.query('commit')
-      res.redirect('/static/books/' + req.body.bookId)
+      res.redirect('/books/' + req.body.bookId)
     } catch (err) {
       console.error(err)
       await connect.query('rollback')

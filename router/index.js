@@ -1,27 +1,30 @@
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { promiseConnect } from '../db/connector.js'
 
-import bookRouter from '../router/api/book.js'
-import profileRouter from '../router/api/profile.js'
-import reserveRouter from '../router/api/reserve.js'
-
-import staticRouter from './static/index.js'
+import bookRouter from './book.js'
+import profilesRouter from './profiles.js'
+import reservesRouter from './reserves.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const router = express.Router()
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../static/index.html'))
+router.get('/', async (_, res) => {
+  const connect = await promiseConnect()
+  const books = await connect.query(
+    'select *, b.id, r.profileId from books as b left join reserves as r on r.bookId = b.id and r.canceled = false'
+  )
+  res.render('bookList', {
+    books,
+  })
 })
-router.use('/static', staticRouter)
-router.get('/admin', (_, res) => {
-  res.sendFile(path.join(__dirname, 'static/admin.html'))
+router.use('/books', bookRouter)
+router.use('/profiles', profilesRouter)
+router.use('/reserves', reservesRouter)
+router.get('*', (_, res) => {
+  res.render('404')
 })
-
-router.use('/api/books', bookRouter)
-router.use('/api/profiles', profileRouter)
-router.use('/api/reserves', reserveRouter)
 
 export default router

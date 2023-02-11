@@ -1,6 +1,6 @@
 import express from 'express'
 import { body, validationResult } from 'express-validator'
-import { promiseConnect } from '../../db/connector.js'
+import { promiseConnect } from '../db/connector.js'
 const router = express.Router()
 
 router.get('/new', (_, res) => {
@@ -21,7 +21,7 @@ router.post(
     const r = await connect.query(
       `insert into books(title, author, description, img_url) values ('${req.body.title}', '${req.body.author}', "${req.body.description}", '${req.body.img_url}')`
     )
-    res.redirect('/static/books/' + r.insertId)
+    res.redirect('/books/' + r.insertId)
   }
 )
 

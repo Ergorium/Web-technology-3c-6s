@@ -1,7 +1,7 @@
 {{> bookCard }}
 <div>
   {{#unless book.reserved}}
-    <a href="/static/reserves/new?bookId={{book.id}}" id="modal-reserve" class="p-2 bg-stone-600 hover:bg-opacity-70 active:scale-95 rounded-md mr-2">Резерв</a>
+    <a href="/reserves/new?bookId={{book.id}}" id="modal-reserve" class="p-2 bg-stone-600 hover:bg-opacity-70 active:scale-95 rounded-md mr-2">Резерв</a>
   {{/unless}}
   <button id="modal-reset" class="p-2 bg-stone-600 hover:bg-opacity-70 active:scale-95 rounded-md mr-2" book-id="{{book.id}}">Снять резерв</button>
   <button id="modal-delete" class="p-2 bg-stone-600 hover:bg-opacity-70 active:scale-95 rounded-md mr-2" book-id="{{book.id}}">Удалить</button>

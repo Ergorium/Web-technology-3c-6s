@@ -1,7 +1,7 @@
 import express from 'express'
-import { promiseConnect } from '../../db/connector.js'
+import { promiseConnect } from '../db/connector.js'
 const router = express.Router()
-import overdueHelper from '../helpers/overdueHelpers.js'
+import overdueHelper from './helpers/overdueHelpers.js'
 
 router.get('/', async (req, res) => {
   const connect = await promiseConnect()
@@ -36,7 +36,7 @@ router.get('/:id', async (req, res) => {
   const profile = elems[0]
   profile.reserve = overdueHelper(
     await connect.query(
-      `select *, b.title as title from reserves as r left join books as b on r.bookId = b.id where r.profileId = ${profile.id}`
+      `select *, b.title as title from reserves as r left join books as b on r.bookId = b.id where r.profileId = ${profile.id} order by r.canceled`
     )
   )
   res.render('profileInfo', {

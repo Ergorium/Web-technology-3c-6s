@@ -14,10 +14,10 @@
       <h5 class="card--header text-2xl text-amber-200">{{book.author}}</h5>
       <p class="card--description">{{book.description}}</p>
       {{#if book.reserved}}
-      <p><a href="/static/profiles/{{book.profileId}}" class="text-3xl underline">В резерве!!!</a></p>
+      <p><a href="/profiles/{{book.profileId}}" class="text-3xl underline">В резерве!!!</a></p>
       {{/if}}
       {{#if haveLink}}
-      <p><a href="/static/books/{{book.id}}" class="text-2xl">Подробней...</a></p>
+      <p><a href="/books/{{book.id}}" class="text-2xl">Подробней...</a></p>
       {{/if}}
     </div>
   </div>
