@@ -39,6 +39,7 @@ router.get('/:id', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
   const connect = await promiseConnect()
+  await connect.query('start transaction')
   try {
     await connect.query(
       `update books set reserved = false where id = ${req.params.id}`
@@ -46,8 +47,10 @@ router.patch('/:id', async (req, res) => {
     await connect.query(
       `update reserves set canceled = true where bookId = ${req.params.id}`
     )
+    await connect.query('commit')
     res.sendStatus(204)
   } catch (err) {
+    await connect.query('rollback')
     console.error(err)
     res.sendStatus(500)
   }
