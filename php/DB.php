@@ -7,7 +7,7 @@
  */
 
 
-
+$GLOBALS['config'] = parse_ini_file('config.ini');
 class DB
 {
 
