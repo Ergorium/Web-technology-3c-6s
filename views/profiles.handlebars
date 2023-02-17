@@ -1,15 +1,24 @@
+<div class="mb-6 border-b border-stone-800 pb-6">
+  <div class="mb-4">
+    <a href="/profiles/new" class="p-2 bg-stone-600 hover:bg-opacity-70 active:scale-95 rounded-md mr-2 mb-4">Новый профиль</a>
+  </div>
+  <div>
+    {{> titleSearch }}
+  </div>
+</div>
 {{#each profiles}}
 <div class="mb-4">
   <div class="card flex mb-4">
     <div class="card--main">
-      <h3 class="card--header text-3xl text-amber-200 book-modal cursor-pointer" book-id="${
+      <a href="/profiles/{{this.id}}">
+        <h3 class="card--header text-3xl text-amber-200 book-modal cursor-pointer" book-id="${
         item.id
       }">CardID: {{this.id}}</h3>
+      </a>
       <h5 class="card--header text-2xl text-amber-200">{{this.name}}</h5>
       <a href="mailto:{{this.email}}" class="block card--header text-2xl text-amber-200">{{this.email}}</a>
       <a href="tel:{{this.phone}}" class="block card--description">{{this.phone}}</a>
       <p>Книг в резерве {{this.reserve}}</p>
-      <a href="/profiles/{{this.id}}" class="cursor-pointer">Подробнее...</a>
     </div>
   </div>
 </div>

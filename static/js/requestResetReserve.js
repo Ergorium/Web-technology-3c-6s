@@ -1,7 +1,7 @@
 ;(() => {
   async function requestCancelReserve(id) {
     try {
-      const res = await fetch(`/api/books/${id}`, {
+      const res = await fetch(`/books/${id}`, {
         method: 'PATCH',
       })
       if ([400, 404, 500].includes(res.status)) {

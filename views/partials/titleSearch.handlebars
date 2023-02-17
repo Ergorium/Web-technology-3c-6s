@@ -1,0 +1,29 @@
+<div class="search">
+  <style>
+    #query-form>* {
+      margin-right: 10px
+    }
+  </style>
+  <form id="query-form" class="flex items-center" action="{{searcherConfig.address}}">
+    <input id="search" name="{{searcherConfig.defaultSelect}}" type="text" placeholder="search" class="rounded-sm bg-stone-800 bg-opacity-70 focus:bg-opacity-100 outline-0 border-0 px-2 py-1">
+    <select id="select" class="bg-stone-600 px-2 py-1 outline-none">
+      {{#each searcherConfig.types as |type|}}
+        <option value="{{type}}"{{#eq ../searcherConfig.defaultSelect type}}selected{{/eq}}>{{type}}</option>
+      {{/each}}
+    </select>
+    {{#each searcherConfig.customFields as |elem|}}
+    <div>{{{elem}}}</div>
+    {{/each}}
+    <button id="search-button" type="sumbit"><i class="fa-solid fa-magnifying-glass p-2"></i></button>
+  </form>
+</div>
+
+
+<script prefer>
+  const select = document.querySelector('#select')
+  const input = document.querySelector('#search')
+  select.addEventListener('change', (e) => {
+    const value = e.target.value
+    input.setAttribute('name', value)
+  })
+</script>

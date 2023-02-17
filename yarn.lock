@@ -340,6 +340,11 @@ graceful-fs@^4.2.10:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.10.tgz#147d3a006da4ca3ce14728c7aefc287c367d7a6c"
   integrity sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==
 
+handlebars-helper-equal@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/handlebars-helper-equal/-/handlebars-helper-equal-1.0.0.tgz#40c0078e7266da4b0692d8934bfe3e910b0a7a58"
+  integrity sha512-1qcmnBdq8+fgnonjGmH9HB6pSSkSnD7qVoFVjLwJWdpAlszRvthKHReGQx6oLbsC7yGt5vrHE+wngqC/4t6rQQ==
+
 handlebars@^4.7.7:
   version "4.7.7"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.7.tgz#9ce33416aad02dbd6c8fafa8240d5d98004945a1"

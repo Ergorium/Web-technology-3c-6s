@@ -35,8 +35,12 @@ router.post(
       await connect.query('commit')
       res.redirect('/books/' + req.body.bookId)
     } catch (err) {
-      console.error(err)
       await connect.query('rollback')
+      if (err?.errno === 1452) {
+        return res.status(400).render('error', {
+          errorMessage: 'Неверные даныне для создания резерва книги',
+        })
+      }
       res.status(500).render('500')
     }
   }
