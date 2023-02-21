@@ -2,7 +2,7 @@
 include_once('../../components/header.php');
 ?>
 <h1 class="text-4xl mb-4">Создание новой книги</h1>
-<form action="/api/book/create-book.php" method="POST" id="modal-form" class="modal-content min-w-[350px] bg-stone-700 rounded-md relative">
+<form action="/books/new/new.php" method="POST" id="modal-form" class="modal-content min-w-[350px] bg-stone-700 rounded-md relative">
   <div class="modal--main p-4">
     <label for="name" class="block mb-4">
       <p>Название книги</p>

@@ -80,13 +80,23 @@ class DB
      * @param array $arg
      * @return array
      */
-    public static function select($table, $where = '')
+    public static function select($table, $where = '', $limit = null)
+    {
+        $where = ($where != '') ? "WHERE $where" : '';
+        $sql = "SELECT * FROM $table $where " . ($limit ? 'limit ' . $limit : ''
+    );
+        $stmt = self::getPDO()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    public static function selectOne($table, $where)
     {
         $where = ($where != '') ? "WHERE $where" : '';
         $sql = "SELECT * FROM $table $where";
         $stmt = self::getPDO()->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetch(); 
     }
 
     /**
@@ -100,15 +110,20 @@ class DB
         $value = '';
         foreach ($arg as $key => $elem) {
             $param .= "`$key`,";
-            $value .= "'$elem',";
+            $st = str_replace("'", "\'", $elem);
+            $value .= "'$st',";
         }
         $param = substr($param, 0, -1);
+        var_dump($param);
+        echo '<br>';
         $value = substr($value, 0, -1);
+        var_dump($value);
         $stmt = self::getPDO()->prepare("INSERT INTO $table($param) VALUES ($value)");
         try {
             $stmt->execute();
             return $stmt->rowCount();
         } catch (PDOException $e) {
+            var_dump($e);
 //            self::checkError($e);
             return false;
         }
@@ -125,7 +140,8 @@ class DB
         #UPDATE FROM table SET поля where
         $param = '';
         foreach ($arg as $key => $elem) {
-            $param .= "`$key`='$elem',";
+            $st = str_replace("'", "\'", $elem);
+            $param .= "`$key`='$st',";
         }
         $param = substr($param, 0, -1);
         $where = ($where != '') ? "WHERE $where" : '';
