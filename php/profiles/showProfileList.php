@@ -1,6 +1,31 @@
 <?php
 include_once('../DB.php');
 include_once('../helpers/queryConverter.php');
+
+$GLOBALS['searchConfig'] = [
+  'address' => '/profiles',
+  'defaultSelect' => 'email',
+  'types' => ['email', 'phone', 'name'],
+  'customFields' => [
+    '
+    <style>
+      .search-checkbox:checked+* {
+        display: inline
+      }
+      .search-checkbox+* {
+        display: none
+      }
+    </style>',
+    '
+    <label for="has_reserve" class="search-checkbox cursor-pointer bg-stone-600 px-2 py-1">
+        <span>Есть книги в резерве</span>
+        <input type="checkbox" id="has_reserve" name="has_reserve" class="search-checkbox hidden">
+        <i class="fa-solid fa-check-double"></i>
+    </label>
+    ',
+  ],
+];
+
 $where = queryConverter($_GET);
 $where = strlen($where) > 0 ? ' where ' . $where : '';
 

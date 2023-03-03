@@ -11,9 +11,17 @@
 
 - [books.post.new](sequenceDiagrams/book.post.new.md)
 
-- [book.patch.id](sequenceDiagrams/book.patch.id.md)
+- [book.post.edit](sequenceDiagrams/book.patch.id.md)
 
-- [books.delete.id](sequenceDiagrams/book.delete.id.md)]
+- [books.delete.id](sequenceDiagrams/book.delete.id.md)
+
+## Auth
+
+- [authorization.get.index](sequenceDiagrams/authorization.get.index.md)
+
+- [authorization.post.index](sequenceDiagrams/authorization.post.index.md)
+
+- [authorization.post.logout](sequenceDiagrams/authorization.post.logout.md)
 
 ## Profile
 

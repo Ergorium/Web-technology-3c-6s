@@ -6,6 +6,7 @@ sequenceDiagram;
 	participant server
 	participant db
   client-->>+server: PATCH /books/id
+  alt Сотрудник авторизирован
   server->>db: START TRANSACTION
   server->>+db: sql-запрос на изменение статуса резерва
   db-->>-server: статус запроса
@@ -16,7 +17,10 @@ sequenceDiagram;
     server-->>client: status: ok
   else
     server->>db: ROLLBACK
-    server-->>-client: status: server error
+    server-->>client: status: server error
+  end
+  else
+    server-->>-client: html-страница с ошибкой доступа
   end
 ```
 

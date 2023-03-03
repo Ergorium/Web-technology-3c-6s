@@ -6,6 +6,10 @@ function queryConverter($values) {
       array_push($res, 'datediff(timeout, created_at) < 0');
       continue;
     }
+    if ($key === 'has_reserve') {
+      array_push($res, '(select count(*) from reserves as r where r.profileId = p.id and canceled = false) > 0');
+      continue;
+    }
     if (preg_match_all('/.*id.*/mi', $key, $matches, PREG_SET_ORDER, 0)) {
       array_push($res, "$key = $value");
       continue;
